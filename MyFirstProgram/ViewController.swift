@@ -9,15 +9,18 @@
 import Cocoa
 
 class ViewController: NSViewController {
-
-    @IBOutlet weak var labelText: NSTextField!
-
-    @IBOutlet weak var messageText: NSTextField!
     
+    @IBOutlet weak var sheriffHitPoints: NSTextField!
+    @IBOutlet weak var outlawHitPoints: NSTextField!
+    
+    var sheriff = Person ()
+    var outlaw = Person ()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        sheriffHitPoints.integerValue = sheriff.hitPoints
+        outlawHitPoints.integerValue = outlaw.hitPoints
     }
 
     override var representedObject: Any? {
@@ -25,9 +28,32 @@ class ViewController: NSViewController {
         // Update the view, if already loaded.
         }
     }
-
-    @IBAction func changeCase(_ sender: NSButton) {
-        labelText.stringValue = messageText.stringValue.uppercased()
+    
+//    func  applicationDidFinishLaunching(aNotification: NSNotification){
+//        //Insert code here to initialize your application
+//        
+//    }
+    
+    @IBAction func shootButton(_ sender: NSButton) {
+        if sender.tag == 0 {
+            //Sheriff shooting
+            outlaw.hitPoints -= sheriff.shoot()
+        }else {
+            sheriff.hitPoints -= outlaw.shoot()
+        }
+        
+        sheriffHitPoints.integerValue = sheriff.hitPoints
+        outlawHitPoints.integerValue = outlaw.hitPoints
+        
+        if sheriffHitPoints.integerValue <= 0 {
+            let myAlert = NSAlert()
+            myAlert.messageText = "The sheriff died"
+            myAlert.runModal()
+        }else if outlawHitPoints.integerValue <= 0 {
+            let myAlert = NSAlert()
+            myAlert.messageText = "The outlaw died"
+            myAlert.runModal()
+        }
     }
 
 }
