@@ -8,15 +8,20 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class ViewController: NSViewController, NSComboBoxDataSource {
     
     @IBOutlet weak var myCombo: NSComboBox!
     @IBOutlet weak var comboResult: NSTextField!
+    
+    let myArray = ["Sandwich", "Chips", "Soda", "Salad"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.myCombo.usesDataSource = true
+        self.myCombo.dataSource = self
+        
     }
 
     override var representedObject: Any? {
@@ -27,6 +32,14 @@ class ViewController: NSViewController {
     
     @IBAction func showResult(_ sender: NSButton) {
         comboResult.stringValue = myCombo.stringValue
+    }
+    
+    func numberOfItems(in comboBox: NSComboBox) -> Int {
+        return myArray.count
+    }
+    
+    func  comboBox(_ comboBox: NSComboBox, objectValueForItemAt index: Int) -> Any? {
+        return myArray[index]
     }
 }
 
