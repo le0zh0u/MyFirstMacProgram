@@ -9,11 +9,11 @@
 import Cocoa
 
 class ViewController: NSViewController {
-
-    @IBOutlet weak var labelText: NSTextField!
-
-    @IBOutlet weak var messageText: NSTextField!
     
+    @IBOutlet weak var popUpChoice: NSPopUpButton!
+    @IBOutlet weak var textBox: NSTextField!
+    @IBOutlet weak var labelResult: NSTextField!
+    @IBOutlet weak var numberFormat: NumberFormatter!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,9 +26,20 @@ class ViewController: NSViewController {
         }
     }
 
-    @IBAction func changeCase(_ sender: NSButton) {
-        labelText.stringValue = messageText.stringValue.uppercased()
+    @IBAction func showResults(_ sender: NSButton) {
+        if popUpChoice.titleOfSelectedItem! == "None" {
+            numberFormat.numberStyle = NumberFormatter.Style.none
+        } else if popUpChoice.titleOfSelectedItem! == "Decimal" {
+            numberFormat.numberStyle = NumberFormatter.Style.decimal
+        } else if popUpChoice.titleOfSelectedItem! == "Currency" {
+            numberFormat.numberStyle = NumberFormatter.Style.currency
+        } else if popUpChoice.titleOfSelectedItem! == "Percent" {
+            numberFormat.numberStyle = NumberFormatter.Style.percent
+        } else if popUpChoice.titleOfSelectedItem! == "Scientific" { numberFormat.numberStyle = NumberFormatter.Style.scientific
+        } else if popUpChoice.titleOfSelectedItem! == "Spell Out" { numberFormat.numberStyle = NumberFormatter.Style.spellOut
+        }
+        labelResult.stringValue = String(stringInterpolationSegment:
+            textBox.doubleValue)
     }
-
 }
 
