@@ -9,6 +9,10 @@
 import Cocoa
 
 class ViewController: NSViewController {
+    
+    @IBOutlet weak var myCombo: NSComboBox!
+    @IBOutlet weak var comboResult: NSTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,6 +23,10 @@ class ViewController: NSViewController {
         didSet {
         // Update the view, if already loaded.
         }
+    }
+    
+    @IBAction func showResult(_ sender: NSButton) {
+        comboResult.stringValue = myCombo.stringValue
     }
 }
 
