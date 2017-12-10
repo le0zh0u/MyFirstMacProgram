@@ -9,11 +9,6 @@
 import Cocoa
 
 class ViewController: NSViewController {
-
-    @IBOutlet weak var labelText: NSTextField!
-
-    @IBOutlet weak var messageText: NSTextField!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,10 +20,5 @@ class ViewController: NSViewController {
         // Update the view, if already loaded.
         }
     }
-
-    @IBAction func changeCase(_ sender: NSButton) {
-        labelText.stringValue = messageText.stringValue.uppercased()
-    }
-
 }
 
