@@ -685,6 +685,19 @@
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BpL-0k-pVf">
+                                <rect key="frame" x="66" y="190" width="81" height="32"/>
+                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="25P-nI-YAn">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="BpL-0k-pVf" secondAttribute="trailing" constant="339" id="GZO-fF-4Qz"/>
+                            <constraint firstAttribute="bottom" secondItem="BpL-0k-pVf" secondAttribute="bottom" constant="197" id="Urs-w8-zKV"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
