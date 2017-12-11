@@ -11,6 +11,8 @@ import Cocoa
 class ViewController: NSViewController {
     
     
+    @IBOutlet weak var myLabel: NSTextField!
+    let colorPanel = NSColorWell()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,5 +25,13 @@ class ViewController: NSViewController {
         }
     }
     
+    @IBAction func chooseColor(_ sender: NSButton) {
+        colorPanel.activate(true)
+        colorPanel.action = #selector(changeColor(_:))
+    }
+    
+    override func changeColor(_ sender: Any?) {
+        myLabel.textColor = colorPanel.color
+    }
 }
 
