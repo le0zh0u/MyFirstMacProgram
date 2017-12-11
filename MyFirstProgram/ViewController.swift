@@ -22,6 +22,29 @@ class ViewController: NSViewController {
         // Update the view, if already loaded.
         }
     }
+    @IBAction func openPanel(_ sender: NSButton) {
+        let myOpen = NSOpenPanel()
+        myOpen.canChooseFiles = true
+        myOpen.canChooseDirectories = true
+        myOpen.allowsMultipleSelection = true
+        myOpen.begin { (result) -> Void in
+            if result == NSFileHandlingPanelOKButton {
+                print (myOpen.urls)
+            }
+        }
+    }
     
+    @IBAction func savePanel(_ sender: NSButtonCell) {
+        let mySave = NSSavePanel()
+        mySave.title = "Save a File Here"
+        mySave.prompt = "Save Me"
+        
+        mySave.begin { (result) -> Void in
+            if result == NSFileHandlingPanelOKButton {
+                print (mySave.url!)
+                print (mySave.nameFieldStringValue)
+            }
+        }
+    }
 }
 
